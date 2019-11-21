@@ -1,0 +1,77 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <title>CodePen - Prefers Color Scheme Demo</title>
+    <style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+:root {
+  --background: #f0f0f0;
+  --foreground: #333;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  font: 5em 'Roboto Condensed', sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.label {
+  flex-grow: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.label:after {
+  content: "Light";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #333;
+    --foreground: #f0f0f0;
+  }
+  
+  .label:after {
+    content: "Dark";
+  }
+}
+</style>
+    <script>
+  window.console = window.console || function(t) {};
+</script>
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div>
+    <div class="label">Color Scheme: </div>
+    <br><br>prefers-color-scheme:
+    <br><div id="mode"> </div>
+</div>
+<script>
+  function task() {
+	  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+		document.title = "light";
+	  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+		document.title = "dark";
+	  } else if (window.matchMedia("(prefers-color-scheme: no-preference)").matches) {
+		document.title = "no-preference";
+	  }
+
+	  document.getElementById("mode").innerHTML = document.title;
+  }
+  setInterval(task,100)
+</script>
+</body>
+</html>
