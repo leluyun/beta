@@ -73,6 +73,8 @@ body {
         <div class="colorful dark-scheme">Colorful(dark-scheme)</div>
     </div>
 </div>
+<br>
+<div id="ua"></div>
 <script>
   function task() {
 	  var title = "";
@@ -88,6 +90,7 @@ body {
 	  document.getElementById("mode").innerHTML = document.title;
   }
   setInterval(task,100)
+  document.getElementById("ua").innerHTML = navigator.userAgent
 </script>
 </body>
 </html>
