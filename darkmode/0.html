@@ -1,0 +1,93 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light dark">
+<title>Dark Mode Test</title>
+<style>
+:root {
+  --background: white;
+  --foreground: black;
+}
+
+html, body {
+  margin: 0;
+}
+
+body {
+  align-items: center;
+  font: 5em 'Roboto Condensed', sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.div-info {
+	height:auto;
+	overflow: auto;
+}
+
+.label:after {
+  content: "Light";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: black;
+    --foreground: white;
+  }
+  
+  .label:after {
+    content: "Dark";
+  }
+}
+
+.light   { background: white; color: black; }
+.dark { background: black; color: white; }
+.colorful { background: red; color: blue; }
+
+@media (prefers-color-scheme: dark) {
+  .light.dark-scheme   { background:  black; color: white; }
+  .dark.dark-scheme { background: white; color:  black; }
+  .colorful.dark-scheme { background: blue; color:  red; }
+}
+
+
+</style>
+</head>
+<body translate="no">
+<div class="div-info">
+	<br>
+    <div class="label">Color Scheme: </div>
+	<div class="mode">prefers-color-scheme:<div id="mode"> </div>
+	</div>
+</div>
+<br>
+<div class="div-test">
+	<div class="light-div">
+		<div class="light">Light(no dark-scheme)</div>
+		<div class="dark">Dark(no dark-scheme)</div>
+		<div class="colorful">Colorful(no dark-scheme)</div>
+	</div>
+	<br>
+	<div class="dark-div">
+		<div class="light dark-scheme">Light(dark-scheme)</div>
+		<div class="dark dark-scheme">Dark(dark-scheme)</div>
+		<div class="colorful dark-scheme">Colorful(dark-scheme)</div>
+	</div>
+</div>
+<script>
+  function task() {
+	  var title = "";
+	  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+		title = "light";
+	  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+		title = "dark";
+	  } else if (window.matchMedia("(prefers-color-scheme: no-preference)").matches) {
+		title = "no-preference";
+	  }
+
+	  document.title = title;
+	  document.getElementById("mode").innerHTML = document.title;
+  }
+  setInterval(task,100)
+</script>
+</body>
+</html>
