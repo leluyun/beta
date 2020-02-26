@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+    <title></title>
+    <style type="text/css">
+      view {
+        display: block;
+      }
+      .weui-panel {
+        margin-top: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .weui-panel__hd {
+        padding: 14px 15px 10px;
+        color: #999999;
+        font-size: 13px;
+        position: relative;
+      }
+      .weui-panel__bd {
+        padding: 10px;
+        position: relative;
+      }
+      button {
+        padding: 10px;
+        border: 1px solid #EEE;
+      }
+      #embed1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+      }
+
+      #video1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+      }
+      #container {
+        transition: transform .3s ease;
+      }
+      #container2 {
+        transition: transform .3s ease;
+      }
+      #container button {
+        position: absolute;
+        z-index: 1;
+        color: #888;
+        bottom: 0;
+        right: 0;
+      }
+      #container2 button {
+        position: absolute;
+        z-index: 1;
+        color: #888;
+        bottom: 0;
+        right: 0;
+      }
+      #container view {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+      }
+      .video {
+        position: absolute;
+        width: 100%;
+        z-index:1
+      }
+      .native {
+        position: absolute;
+        width: 100%;
+        z-index:2
+      }
+    </style>
+</head>
+<body>
+<view class="weui-panel">
+    <view class="weui-panel__hd">native view</view>
+    <view id="parent" class="weui-panel__bd">
+        <a>我是全屏WebView</a>
+        <button onclick="dom_modify()">执行</button>
+    </view>
+    <view id="parent" class="weui-panel__bd">
+        <div id="container" style="width: 100%; height: 600px; position: relative;">
+            <embed id="native" class="native" type="application/x-wechat-component" embed-id="1" embed-type="native_view" style="height: 200px;"></embed>
+        </div>
+    </view>
+    <view id="parent" class="weui-panel__bd">
+        <a>宽高变化:</a>
+        <button onclick="dom_modify()">执行</button>
+    </view>
+</view>
+<script>
+    function dom_modify(){
+        var native = document.getElementById("native");
+        if(native.style.height == "200px"){
+            native.style.height = "400px"
+        }else{
+            native.style.height = "200px"
+        }
+
+        var video = document.getElementById("video");
+        if(video.style.height == "200px"){
+            video.style.height = "400px"
+        }else{
+            video.style.height = "200px"
+        }
+    }
+</script>
+</body>
+</html>
