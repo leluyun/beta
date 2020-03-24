@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="color-scheme" content="light dark">
+    <title>暗黑模式测试</title>
+
+    <script>
+        window.__reportStart = Date.now();
+    </script>
+
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.1.0/weui.css">
+	<style type="text/css">
+		body {
+		  font-family: 'arial', Heiti, "é»‘ä½“";
+		  position: relative;
+		  -webkit-box-sizing: border-box;
+				  box-sizing: border-box;
+		  min-height: 100%;
+		}
+		
+		.a2{
+		 color: #000000;
+		}
+		
+		.wld-input__input {
+		  width: 100%;
+		  height: 2rem;
+		  line-height: 2rem;
+		  font-size: 0.875rem;
+		  caret-color: #dbae31;
+		  padding-left: 4.5rem;
+		  background-color: transparent;
+		  z-index: 1;
+		  -webkit-box-sizing: border-box;
+				  box-sizing: border-box;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  border: 0;
+		  -webkit-appearance: none;
+		  outline: none;
+		}
+		.wxss-medium {
+		  font-family: 'WeChatSansSS-Medium';
+		}
+.wld-input {
+  position: relative;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 2rem;
+}
+.wld-input__tips {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+	</style>
+</head>
+
+<body class="no-page">
+
+	<div class="a1">
+		<div>
+			外层没有设置默认颜色
+		</div>
+		<div class="wld-input">
+			<input type="tel" placeholder="输入金额" id="moneyInput" maxlength="5" class="wld-input__input wxss-medium"> 
+		</div>
+	</div>
+
+	<br/><br/><br/><br/><br/><br/>
+    <div class="a2">
+		<div>
+			外层有设置默认颜色
+		</div>
+		<div class="wld-input">
+			<input type="tel" placeholder="输入金额" id="moneyInput" maxlength="5" class="wld-input__input wxss-medium"> 
+		</div>
+	
+	</div>
+  
+
+</body>
+
+</html>
