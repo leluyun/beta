@@ -1,5 +1,6 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
     <title>CodePen - Prefers Color Scheme Demo</title>
     <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
@@ -34,8 +35,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #00FF00;
-    --foreground: #FF0000;
+    --background: #333;
+    --foreground: #f0f0f0;
   }
   
   .label:after {
@@ -57,9 +58,6 @@ body {
     <div class="label">Color Scheme: </div>
     <br><br>prefers-color-scheme:
     <br><div id="mode"> </div>
-</div>
-<div>
-	<iframe src="index.html"/>
 </div>
 <script>
   function task() {
