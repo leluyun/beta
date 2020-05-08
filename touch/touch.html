@@ -36,7 +36,7 @@ body {
 var app = new Vue({
   el: '#app',
   data: {
-    message: [...new Array(200)].reduce((sum, item, index) => { return sum += index + '<br>' }, ''),
+    message: [...new Array(2000)].reduce((sum, item, index) => { return sum += index + '<br>' }, ''),
     console: '',
     ua: navigator.userAgent,
   },
