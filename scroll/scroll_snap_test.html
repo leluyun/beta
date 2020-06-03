@@ -1,0 +1,162 @@
+﻿<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <style>
+.no-support {
+  text-align: center;
+  padding: 5px;
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ee6620;
+  color: #fff;
+  font-size: 16px;
+}
+
+@supports(scroll-snap-stop: always) {
+  .no-support {
+    display: none;
+  }
+}
+
+.example-wrapper {
+  text-align: center;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  width: 320px;
+  height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #333;
+  overflow: scroll;
+  position: relative;
+  display: flex;
+}
+
+.element {
+  width: 600px;
+  height: 320px;
+  scroll-margin: 10px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.element code {
+  font-size: 13px;
+}
+
+.element:nth-child(4n + 1) {
+  background: #1d1e21;
+}
+
+.element:nth-child(4n +2 ) {
+  background: #ee6620;
+}
+
+.element:nth-child(4n + 3) {
+  background: #777ba0;
+}
+
+.element:nth-child(4n + 4) {
+  background: #da1e62;
+}
+
+.y-mandatory {
+  //scroll-snap-type: both mandatory;
+  scroll-xweb-limit: xweb-element;
+  scroll-xweb-transition: 0.5s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
+
+.y-scroll .element {
+  margin-bottom: 10px;
+}
+
+.snap-stop-always {
+  //scroll-snap-stop: always;
+}
+</style>
+</head>
+<body>
+<div class="no-support">
+  <p>Heads up: It doesn't look like your browser supports <code>scroll-snap-top</code>! Check <a href="https://caniuse.com/#feat=css-snappoints">Can I use</a> for current browser support. Maybe try opening this CodePen in a different browser, like Chrome?</p>
+</div>
+
+
+<div class="example-wrapper">
+  <p>Please note that Chrome <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=823998&q=scroll-snap-stop&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified">may not support</a><br><code>scroll-snap-stop: always;</code></p>
+  <p>Scroll slowly to "feel" the snap points.</p>
+
+  <div id="container" class="container y-scroll y-mandatory" ontouchstart="ontouch_start()" ontouchmove="ontouch_move()" ontouchend="ontouch_end()" onscroll="onscrollchanged()">
+    <div class="wrapper">
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+      <div class="element snap-stop-always"><code>scroll-snap-stop: always;</code></div>
+      <div class="element"><code>scroll-snap-stop: normal;</code></div>
+    </div>
+  </div>
+  <button type="button" onclick="btn_click_1()">Scroll To 0,200</button>
+  <button type="button" onclick="btn_click_2()">Scroll To 0,500</button>
+
+</div>
+<script>
+function ontouch_start() {
+	console.log("ontouchstart");
+}
+function ontouch_move() {
+	console.log("ontouchmove");
+}
+function ontouch_end() {
+	console.log("ontouchend");
+	var el = document.getElementById("container");
+	console.log('touchend:', el.scrollTop)
+    if (el.scrollTop > 50) {
+      el.scrollTo({
+        top: 500,
+        left: 0,
+        xwebTransition : "xweb-spring(2,100,10,0)",
+        xwebDuration : "1s"
+      });
+    }
+}
+function scroll(x, y) {
+	var container = document.getElementById("container");
+	container.scrollTo({
+	top: y,
+	left: x,
+	//xwebTransition : "cubic-bezier(0.1, 0.7, 1.0, 0.1)",
+	xwebTransition : "xweb-spring(1,100,10,0)",
+	xwebDuration : "1000s"
+	});
+}
+function btn_click_1() {
+	scroll(0,200)
+}
+function btn_click_2() {
+	scroll(0,500)
+}
+function onscrollchanged() {
+    var container = document.getElementById("container");
+	console.log("onscroll:" + container.scrollTop);
+}
+</script>
+</body>
+</html>
