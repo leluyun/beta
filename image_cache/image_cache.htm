@@ -45,6 +45,7 @@
 	  for(var i = 0;i < imageList.length;i++) {
 		imageList[i].src = "";
 		div.remove(imageList[i]);
+		imageList[i] = null;
 	  }
 	  imageList.length = 0;
     })
