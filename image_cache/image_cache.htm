@@ -43,6 +43,7 @@
     clear.addEventListener('click', function() {
 	var div = document.querySelector('#container')
 	  for(var i = 0;i < imageList.length;i++) {
+		imageList[i].src = "";
 		div.remove(imageList[i]);
 	  }
 	  imageList.length = 0;
