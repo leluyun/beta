@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://leluyun.github.io/beta/memory/test.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body style="">
+  <button id="load">加载图片</button>
+  <button id="clear">清空图片</button>
+
+  <script>
+    const btn = document.querySelector('#load')
+    const clear = document.querySelector('#clear')
+
+	var index = 2;
+	var imageList = new Array();
+	
+    btn.addEventListener('click', function() {
+	var div = document.querySelector('#container')
+	if(!div) {
+	div = document.createElement('div');
+	div.id = "container";
+		document.body.appendChild(div);
+	}
+      //let content = ''
+      //images.forEach(item => {
+      //  content += `<img src="${item}"></img>`
+      //})
+	  for (var i = 1;i <= 10;i++) {
+		var img = new Image();
+		img.src = './image_cache/' +  i + ' - Copy (' + index + ').gif';
+		img.style = 'width:50px;height:50px';
+		imageList.push(img);
+		div.appendChild(img);
+	  }
+	  index++;
+	  if(index > 24){
+		index = 2;
+	  }
+    })
+    clear.addEventListener('click', function() {
+	var div = document.querySelector('#container')
+	  for(var i = 0;i < imageList.length;i++) {
+		imageList[i].src = "";
+		div.remove(imageList[i]);
+	  }
+	  imageList.length = 0;
+    })
+  </script>
+
+</body></html>
