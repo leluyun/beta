@@ -7,11 +7,13 @@
   <title>Document</title>
 </head>
 <body style="">
-  <button id="load">加载图片</button>
+  <button id="loadgif">加载gif图片</button>
+  <button id="loadjpg">加载jpg图片</button>
   <button id="clear">清空图片</button>
 
   <script>
-    const btn = document.querySelector('#load')
+    const btn = document.querySelector('#loadgif')
+	const btnJpg = document.querySelector('#loadjpg')
     const clear = document.querySelector('#clear')
 
 	var index = 2;
@@ -38,6 +40,31 @@
 	  index++;
 	  if(index > 24){
 		index = 2;
+	  }
+    })
+	
+	var jpgIndex = 2;
+	btnJpg.addEventListener('click', function() {
+	var div = document.querySelector('#container')
+	if(!div) {
+	div = document.createElement('div');
+	div.id = "container";
+		document.body.appendChild(div);
+	}
+      //let content = ''
+      //images.forEach(item => {
+      //  content += `<img src="${item}"></img>`
+      //})
+	  for (var i = 1;i <= 1;i++) {
+		var img = new Image();
+		img.src = './image_cache/' +  i + ' - Copy (' + jpgIndex + ').jpg';
+		img.style = 'width:50px;height:50px';
+		imageList.push(img);
+		div.appendChild(img);
+	  }
+	  jpgIndex++;
+	  if(jpgIndex > 6){
+		jpgIndex = 2;
 	  }
     })
     clear.addEventListener('click', function() {
