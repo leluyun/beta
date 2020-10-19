@@ -49,6 +49,14 @@
 			document.getElementById('video');
 		}
 		
+		var play1 = function(){
+			document.getElementById('video').playbackRate = 1;
+		}
+		
+		var play3 = function(){
+			document.getElementById('video').playbackRate = 3;
+		}
+		
 		var xxVideoPlaying = function(){
 			document.getElementById('video');
 		}
@@ -81,9 +89,6 @@
 			<video id="video" playing="xxVideoPlaying" waiting="xxVideoWaiting" src="https://1252524126.vod2.myqcloud.com/9764a7a5vodtransgzp1252524126/380f809f5285890798993443373/drm/v.f230.m3u8?time=1600941466243" timeupdate="xxVideoTimeupdate" progress="xxVideoProgress" controls="controls">
 			</video>
 			
-			<video class="" webkit-playsinline="isiPhoneShowPlaysinline" autoplay="true" playsinline="isiPhoneShowPlaysinline" origin_src="http://183.61.62.144/variety.tc.qq.com/A7xiwJWXy00TUdy5VyN89gPypkOx69gkDkxcuws1zkhg/p02008fn39e.p202.1.mp4?vkey=E3CC5F15237AB0F15B918B485F308B24A414EF35EFA29FDAF8404ACE29AFD43037523DC8867CDA1800508C914EC63EB94835BE387C693B45CB85E350BCAC9F7B2E0C5C90E3C7DBD0AE908668C47F47335214A7482F49B59131446041A532C90ED5030DAE78390E9D&amp;platform=61001&amp;sdtfrom=v9064&amp;fmt=hd&amp;level=0" src="http://183.61.62.144/variety.tc.qq.com/A7xiwJWXy00TUdy5VyN89gPypkOx69gkDkxcuws1zkhg/p02008fn39e.p202.1.mp4?vkey=E3CC5F15237AB0F15B918B485F308B24A414EF35EFA29FDAF8404ACE29AFD43037523DC8867CDA1800508C914EC63EB94835BE387C693B45CB85E350BCAC9F7B2E0C5C90E3C7DBD0AE908668C47F47335214A7482F49B59131446041A532C90ED5030DAE78390E9D&amp;platform=61001&amp;sdtfrom=v9064&amp;fmt=hd&amp;level=0" preload="auto">                   您的浏览器不支持 video 标签              </video>
-			
-			<iframe id="video_iframe" class="video_iframe" data-vidtype="2" allowfullscreen="" frameborder="0" data-ratio="1.7666666666666666" data-w="848" data-src="https://v.qq.com/iframe/player.html?vid=j0025ehlgjj&amp;width=670&amp;height=376.875&amp;auto=0" width="670" height="376.875" data-vh="376.875" data-vw="670" style="display: block; width: 731px; height: 411.188px; overflow: hidden;" scrolling="no" src="https://v.qq.com/iframe/player.html?vid=j0025ehlgjj&amp;width=670&amp;height=376.875&amp;auto=0&amp;encryptVer=6.0&amp;platform=61001&amp;cKey=Uqr9anBgiPnNMirJljpaOIV6G5/q1Sj8uEopvVepHoqvWqWk04PeXQDetil1c0XX"></iframe>
 			<div id="videoControls"> 
 				<div id="progressWrap">  
 					<div id="playProgress">  
@@ -92,14 +97,17 @@
 				</div>
 				<div>
 					<button id="playBtn" onclick="copyText()" title="Play"> 播放 </button> 
+					<button id="play1Btn" onclick="play1()" title="Play"> 1倍速播放 </button> 
+					<button id="play3Btn" onclick="play3()" title="Play"> 3倍速播放 </button> 
 					<button id="fullScreenBtn" title="FullScreen Toggle">  全屏 </button>
 					<button type="button" title="切换全屏"><span class="tvp_btn_value">全屏</span></button>
 				</div> 
 			</div> 
+			
+			<video class="" webkit-playsinline="isiPhoneShowPlaysinline" autoplay="true" playsinline="isiPhoneShowPlaysinline" origin_src="http://183.61.62.144/variety.tc.qq.com/A7xiwJWXy00TUdy5VyN89gPypkOx69gkDkxcuws1zkhg/p02008fn39e.p202.1.mp4?vkey=E3CC5F15237AB0F15B918B485F308B24A414EF35EFA29FDAF8404ACE29AFD43037523DC8867CDA1800508C914EC63EB94835BE387C693B45CB85E350BCAC9F7B2E0C5C90E3C7DBD0AE908668C47F47335214A7482F49B59131446041A532C90ED5030DAE78390E9D&amp;platform=61001&amp;sdtfrom=v9064&amp;fmt=hd&amp;level=0" src="http://183.61.62.144/variety.tc.qq.com/A7xiwJWXy00TUdy5VyN89gPypkOx69gkDkxcuws1zkhg/p02008fn39e.p202.1.mp4?vkey=E3CC5F15237AB0F15B918B485F308B24A414EF35EFA29FDAF8404ACE29AFD43037523DC8867CDA1800508C914EC63EB94835BE387C693B45CB85E350BCAC9F7B2E0C5C90E3C7DBD0AE908668C47F47335214A7482F49B59131446041A532C90ED5030DAE78390E9D&amp;platform=61001&amp;sdtfrom=v9064&amp;fmt=hd&amp;level=0" preload="auto">                   您的浏览器不支持 video 标签              </video>
+			
+			<iframe id="video_iframe" class="video_iframe" data-vidtype="2" allowfullscreen="" frameborder="0" data-ratio="1.7666666666666666" data-w="848" data-src="https://v.qq.com/iframe/player.html?vid=j0025ehlgjj&amp;width=670&amp;height=376.875&amp;auto=0" width="670" height="376.875" data-vh="376.875" data-vw="670" style="display: block; width: 731px; height: 411.188px; overflow: hidden;" scrolling="no" src="https://v.qq.com/iframe/player.html?vid=j0025ehlgjj&amp;width=670&amp;height=376.875&amp;auto=0&amp;encryptVer=6.0&amp;platform=61001&amp;cKey=Uqr9anBgiPnNMirJljpaOIV6G5/q1Sj8uEopvVepHoqvWqWk04PeXQDetil1c0XX"></iframe>
 		</div>
 	</div>
-	<script type="text/javascript" src="xweb_fullscreen_video.js"></script>
-
-
 </body>
 </html>
