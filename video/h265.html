@@ -1,0 +1,53 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light">
+    <title>H265</title>
+    <style>
+html, body {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  font: 5em , sans-serif;
+}
+
+.label {
+  flex-grow: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.label:after {
+  content: "Light";
+}
+
+</style>
+</head>
+<body translate="no">
+<div>
+    <br><br>video/mp4; codecs="hvc1":
+    <br><div id="mode"> </div>
+	
+	<br><br>video/mp4; codecs="hevc":
+    <br><div id="mode2"> </div>
+	
+	<br><br>application/vnd.apple.mpegurl; codecs="hevc":
+    <br><div id="mode3"> </div>
+</div>
+<script>
+  function task() {
+	  document.title = document.createElement('video').canPlayType('video/mp4; codecs="hvc1"');
+
+	  document.getElementById("mode").innerHTML = document.title;
+	  
+	  document.getElementById("mode2").innerHTML = document.createElement('video').canPlayType('video/mp4; codecs="hevc"');
+	  
+	  document.getElementById("mode3").innerHTML = document.createElement('video').canPlayType('application/vnd.apple.mpegurl; codecs="hevc"');
+  }
+  setInterval(task,100)
+</script>
+</body>
+</html>
