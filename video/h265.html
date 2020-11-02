@@ -34,6 +34,9 @@ body {
 	<br><br>video/mp4; codecs="hevc":
     <br><div id="mode2"> </div>
 	
+	<br><br>application/vnd.apple.mpegurl; codecs="hvc1":
+    <br><div id="mode3"> </div>
+	
 	<br><br>application/vnd.apple.mpegurl; codecs="hevc":
     <br><div id="mode3"> </div>
 </div>
@@ -45,7 +48,9 @@ body {
 	  
 	  document.getElementById("mode2").innerHTML = document.createElement('video').canPlayType('video/mp4; codecs="hevc"');
 	  
-	  document.getElementById("mode3").innerHTML = document.createElement('video').canPlayType('application/vnd.apple.mpegurl; codecs="hevc"');
+	  document.getElementById("mode3").innerHTML = document.createElement('video').canPlayType('application/vnd.apple.mpegurl; codecs="hvc1"');
+	  
+	  document.getElementById("mode4").innerHTML = document.createElement('video').canPlayType('application/vnd.apple.mpegurl; codecs="hevc"');
   }
   setInterval(task,100)
 </script>
