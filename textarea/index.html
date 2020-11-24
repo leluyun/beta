@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://leluyun.github.io/beta/memory/test.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="">
+<textarea id="ta" wx_extra_info="{}" wx_lock_focus="1"></textarea>
+<button id="unlock_blur">unlock blur</button>
+<button id="lock_blur">lock blur</button>
+<div id="blur"></div>
+<button id="load">加载图片</button>
+<button id="clear">清空图片</button>
+<div id="div">123456</div>
+
+<script>
+	const btn = document.querySelector('#unlock_blur')
+	const btn2 = document.querySelector('#lock_blur')
+	const load = document.querySelector('#load')
+    const clear = document.querySelector('#clear')
+	const div = document.querySelector('#div')
+	const blur = document.querySelector('#blur')
+	const ta = document.querySelector('#ta')
+	btn.addEventListener('click', function() {
+		div.innerText = "click"
+		blur.innerText = ta.getAttribute("wx_lock_focus")
+		    ta.setAttribute("wx_lock_focus","0");
+		    ta.blur();
+		    ta.setAttribute("wx_lock_focus","1");
+	});
+	btn2.addEventListener('click', function() {
+		div.innerText = "click"
+		blur.innerText = ta.getAttribute("wx_lock_focus")
+		    ta.blur();
+	});
+	load.addEventListener('click', function() {
+		div.innerText = "load"
+	});
+	clear.addEventListener('click', function() {
+		div.innerText = "clear"
+	});
+  </script>
+</body></html>
