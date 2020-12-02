@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<html>
+<body>
+  <div id="hevc_video">
+    1. hevc:
+    <br>
+    expected: 
+    <br>
+    设备支持 hevc 硬解且在配置 xweb_disable_hevc_hls 里没有拉黑的能正常播放
+    <br>
+    <video controls width="250" src="./hevc.mp4"/>
+  </div>
+
+  <div id="h264_video">
+    2. h264:
+    <br>
+    expected: 
+    <br>
+    均能正常播放
+    <br>
+    <video controls width="250" src="./h264.mp4"/>
+  </div>
+
+  <div id="fallback_video">
+    3. fallback_video:
+    <br>
+    expected: 
+    <br>
+    如果 1 可以正常播放，则和 1 一致，否则则和 2 一致
+    <br>
+    <video controls width="250" id="video">
+
+      <source src="./hevc.mp4" type="video/mp4">
+      <source src="./h264.mp4" type="video/mp4">
+  
+      Sorry, your browser doesn't support embedded videos.
+  </video>
+
+  <div id="fallback_video">
+    4. js api:
+    <br>
+    expected: 
+    <br>
+    如果 1 可以正常播放，则 can play hvc1 为 probably / maybe，否则为 No
+    <br>
+    如果 2 可以正常播放，则 can_play_hvc1 为 probably，否则为 No
+    <br>
+    <div>can play avc1: </div> 
+    <div id="can_play_avc_div">No</div>
+    <br>
+    <div>can play hvc1: </div>
+    <div id="can_play_hvc_div">No</div>
+
+    <script>
+      let can_play_avc = document.createElement('video').canPlayType('video/mp4; codecs="avc1"')
+      if (can_play_avc != '') {
+        document.getElementById('can_play_avc_div').innerText = can_play_avc
+      }
+
+      let can_play_hvc = document.createElement('video').canPlayType('video/mp4; codecs="hvc1"')
+      if (can_play_hvc != '') {
+        document.getElementById('can_play_hvc_div').innerText = can_play_hvc
+      }
+    </script>
+  </div>
+
+  <div id="hls_video">
+    5. hls video:
+    <br>
+    expected: 
+    <br>
+    如果 1 可以正常播放，则正常播放
+    <br>
+    <video controls width="250" src="https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8" type="application/x-mpegURL"></video>
+  </div>
+</body>
+
+</html>
