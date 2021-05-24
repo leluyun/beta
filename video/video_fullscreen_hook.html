@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5-Video-Player</title>
+	<style type="text/css">
+		.videoPlayer{
+			border: 1px solid #000;
+			width:100%;
+		}
+		.videoPlayer video::-webkit-media-controls {
+			//display: none!important;
+		}
+		#video{
+			margin-top: 0px;
+			width:100%;
+		}
+		#videoControls{
+			margin-top: 0px;
+		}
+		.show{
+			opacity: 1;
+		}
+		.hide{
+			opacity: 0;
+		}
+		#progressWrap{
+			background-color: black;
+			height: 25px;
+			cursor: pointer;
+		}
+		#playProgress{
+			background-color: red;
+			width: 0px;
+			height: 25px;
+			border-right: 2px solid blue;
+		}
+		#showProgress{
+			background-color: ;
+			font-weight: 600;
+			font-size: 20px;
+			line-height: 25px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var index = 0;
+		var copyText = function(){
+			document.getElementById('video');
+		}
+		
+		var play1 = function(){
+			document.getElementById('video').playbackRate = 1;
+		}
+		
+		var play3 = function(){
+			document.getElementById('video').playbackRate = 3;
+		}
+		
+		var xxVideoPlaying = function(){
+			document.getElementById('video');
+		}
+		
+		var xxVideoWaiting = function(){
+			document.getElementById('video');
+		}
+		
+		var xxVideoProgress = function(){
+			document.getElementById('video');
+		}		
+		var xxVideoTimeupdate = function(){
+			document.getElementById('video');
+		}	
+
+		var xxVideoFullscreen = function(){
+			document.getElementById('video').webkitRequestFullscreen();
+		}	
+
+		var xxVideoSrcChanged = function(){
+			if(index % 2 == 0) {
+				document.getElementById('video').src = "video_640_368.mp4";
+			} else {
+				document.getElementById('video').src = "video_320_176.mp4";
+			}
+			document.getElementById('video').play();
+			index++;
+		}				
+		
+		var xweb_webkitfullscreenchange = function(e) {
+			console.log("xweb_webkitfullscreenchange:" + e.target)
+			e.cancelBubble=false;
+			return e.stopPropagation();
+		}
+		
+		var xweb_webkitfullscreenchange2 = function(e) {
+			console.log("xweb_webkitfullscreenchange2")
+		}
+		
+		window.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('video').addEventListener('webkitfullscreenchange',xweb_webkitfullscreenchange)
+            document.getElementById('videoContainer').addEventListener('webkitfullscreenchange',xweb_webkitfullscreenchange)
+			window.addEventListener('webkitfullscreenchange', function(e) {
+			if(document.webkitFullscreenElement) {
+				window.addEventListener('webkitfullscreenchange', xweb_webkitfullscreenchange2)
+			}
+			return e.stopPropagation();
+		  }, false);
+		})
+		
+		                
+	</script>
+	<div class="">
+		<!--<p>
+		<img src="./1.jpg"/>
+		</p>
+
+		<p>
+		<img src="./2.gif"/>
+		</p>
+		
+		<p>
+		<img src="./3.webp"/>
+		</p>-->
+		<h1>HTML5_Video_Player</h1>
+		<div class="videoPlayer" id="videoContainer">
+			<video id="video" playing="xxVideoPlaying" waiting="xxVideoWaiting" src="video_320_176.mp4" timeupdate="xxVideoTimeupdate" progress="xxVideoProgress" controls="controls">
+			</video>
+			
+			<div id="videoControls"> 
+				<div id="progressWrap">  
+					<div id="playProgress">  
+						<span id="showProgress">0</span> 
+					</div>
+				</div>
+				<div>
+					<button id="playBtn" onclick="copyText()" title="Play"> 播放 </button> 
+					<button id="play1Btn" onclick="play1()" title="Play"> 1倍速播放 </button> 
+					<button id="play3Btn" onclick="play3()" title="Play"> 3倍速播放 </button> 
+					<button type="button" onclick="xxVideoFullscreen()" title="切换全屏">全屏</button>
+					<button type="button" onclick="xxVideoSrcChanged()" title="切换视频大小">切换视频大小</button>
+				</div> 
+			</div> 
+		</div>
+	</div>
+</body>
+</html>
