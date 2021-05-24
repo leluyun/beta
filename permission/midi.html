@@ -33,18 +33,18 @@ var p = document.getElementById("p");
 
 try {
   navigator.
-  requestMediaKeySystemAccess("com.widevine.alpha", config).
-  then(function(mediaKeySystemAccess) {
-    console.log('widevine support ok', mediaKeySystemAccess);
-	p.innerHTML = 'widevine support ok';
+  requestMIDIAccess({sysex: true}).
+  then(function(midi) {
+    console.log('midi support ok', midi);
+	p.innerHTML = 'midi support ok';
   }).catch(function(e) {
-    p.innerHTML = 'no widevine support, rejected';
-    console.log('no widevine support, rejected');
+    p.innerHTML = 'no midi support, rejected';
+    console.log('no midi support, rejected');
     console.log(e);
   });
 } catch (e) {
-  p.innerHTML = 'no widevine support caught exception';
-  console.log('no widevine support caught exception');
+  p.innerHTML = 'no midi support caught exception';
+  console.log('no midi support caught exception');
   console.log(e);
 }
 
