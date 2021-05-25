@@ -1,0 +1,35 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light">
+    <title>H265</title>
+    <style>
+html, body {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  font: 5em , sans-serif;
+}
+
+.label {
+  flex-grow: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.label:after {
+  content: "Light";
+}
+
+</style>
+</head>
+<body translate="no">
+<div>
+	<video id="video" src="hevc_1080p.mp4" controls="controls">
+	</video>
+</div>
+</body>
+</html>
