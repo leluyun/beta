@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5-Video-Player</title>
+	<style type="text/css">
+		.videoPlayer{
+			border: 1px solid #000;
+			width:100%;
+		}
+		.videoPlayer video::-webkit-media-controls {
+			//display: none!important;
+		}
+		#video{
+			margin-top: 0px;
+			width:100%;
+		}
+		#videoControls{
+			margin-top: 0px;
+		}
+		.show{
+			opacity: 1;
+		}
+		.hide{
+			opacity: 0;
+		}
+		#progressWrap{
+			background-color: black;
+			height: 25px;
+			cursor: pointer;
+		}
+		#playProgress{
+			background-color: red;
+			width: 0px;
+			height: 25px;
+			border-right: 2px solid blue;
+		}
+		#showProgress{
+			background-color: ;
+			font-weight: 600;
+			font-size: 20px;
+			line-height: 25px;
+		}
+	</style>
+</head>
+<body onresize="resize()">
+	<script type="text/javascript">
+		var fullscreen = function(){
+			document.getElementById('videoContainer').webkitRequestFullScreen();
+		}
+		var resize = function(){
+			if(document.webkitIsFullScreen) {
+				document.webkitExitFullscreen();
+			}
+		}
+	</script>
+	<div class="">
+		<!--<p>
+		<img src="./1.jpg"/>
+		</p>
+
+		<p>
+		<img src="./2.gif"/>
+		</p>
+		
+		<p>
+		<img src="./3.webp"/>
+		</p>-->
+		<h1>HTML5_Video_Player</h1>
+		<div class="videoPlayer" id="videoContainer">
+			<video id="video" playing="xxVideoPlaying" waiting="xxVideoWaiting" src="video_320_176.mp4" timeupdate="xxVideoTimeupdate" progress="xxVideoProgress" controls="controls">
+			</video>
+			
+			<div id="videoControls"> 
+				<button id="fullScreenBtn" onclick="fullscreen()">全屏</button>
+			</div> 
+		</div>
+	</div>
+</body>
+</html>
