@@ -1,0 +1,30 @@
+客户端说明：
+微信XWeb浏览器通过将76版本的功能合到67版本来支持Dark Mode，并提供两个接口给客户端对当前进程进行设置： 
+
+实际适配微信其实主要是三种场景：
+场景一：
+微信深色模式下，支持dark的网页使用dark css，不支持dark的网页强制智能反色：
+setForceDarkMode(true), setForceDarkBehavior(2);
+ForceDarkMode：2
+ForceDarkBehavior：2
+
+场景二：
+微信深色模式下，支持dark的网页使用dark css，不支持dark的网页也不强制智能反色：
+setForceDarkMode(true), setForceDarkBehavior(1); 
+ForceDarkMode：2
+ForceDarkBehavior：1
+
+场景三：
+微信浅色模式下，不需要显示dark：
+setForceDarkMode(false)
+ForceDarkMode：0
+
+
+（1）ForceDarkMode
+0：OFF 
+1：AUTO //因为主要由微信客户端控制，不采用AUTO。
+2：ON
+（2）ForceDarkBehavior 
+0: FORCE_DARK_ONLY 
+1: MEDIA_QUERY_ONLY
+2: PREFER_MEDIA_QUERY_OVER_FORCE_DARK

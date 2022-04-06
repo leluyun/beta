@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function onClipBoard() {
+      var data = "复制内容";
+      if (typeof window.clipboardData !== "undefined") {
+        window.clipboardData.setData("Text", data);
+        alert("支持window.clipboardData");
+      } else if (typeof window.getSelection !== "undefined") {
+        let input = document.createElement("input");
+        input.value = data;
+        input.setAttribute("copy-flag", "no-editor-copy");
+        document.body.appendChild(input);
+        try {
+          input.select();
+          input.focus();
+          if (window.navigator && window.navigator.clipboard) {
+            window.navigator.clipboard
+              .writeText(data)
+              .then(() => {
+                   console.log('copy success');
+                   window.document.write('write success window.navigator.clipboard ');
+                alert("支持window.navigator.clipboard");
+              })
+              .catch((err) => {
+                // 如果用户没有授权，则抛出异常
+                 console.log('can not copy =' + err);
+                // document.execCommand("copy");
+                window.document.write('write  fail window.navigator.clipboard ');
+                alert("不支持window.navigator.clipboard");
+              });
+          } else {
+          	 window.document.write('no access write success window.navigator.clipboard ');
+            document.execCommand("copy");
+          }
+        } catch (e) {}
+        document.body.removeChild(input);
+      }
+    }
+    window.onload = function () {};
+  </script>
+  <body>
+    <button onclick="onClipBoard()">剪贴板复制内容</button>
+  </body>
+</html>
