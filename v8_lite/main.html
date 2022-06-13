@@ -162,7 +162,7 @@ function finish()
 <!--    location = "results.html?" + encodeURI(outputString);-->
     document.getElementById("countdown").innerHTML = "finished"
 
-    result = runWasmAdd()
+    result = runWasmAdd() + ""
     xweb_test.invoke("finished", result)
 }
 
