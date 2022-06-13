@@ -70,14 +70,14 @@ const wasmBrowserInstantiate = async (wasmModuleUrl, importObject) => {
   return response;
 };
 
-const runWasmAdd = async() => {
+const runWasmAdd = async(resolve,) => {
 // Instantiate our wasm module
 const wasmModule = await wasmBrowserInstantiate("hello-world.wasm");
 
 // Call the Add function export from wasm, save the result
 const addResult = wasmModule.instance.exports.add(24, 24);
 
-return addResult
+resolve(addResult);
 };
 </script>
 <script>
@@ -144,7 +144,7 @@ function recordResult(time)
 async function finish()
 {
 	try {
-		const result = await runWasmAdd();
+		var result = await runWasmAdd();
 	}
 	catch(err) {
 		result = 0
