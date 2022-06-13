@@ -70,7 +70,7 @@ const wasmBrowserInstantiate = async (wasmModuleUrl, importObject) => {
   return response;
 };
 
-const runWasmAdd = async () => {
+const runWasmAdd = async() => {
 // Instantiate our wasm module
 const wasmModule = await wasmBrowserInstantiate("hello-world.wasm");
 
@@ -141,8 +141,14 @@ function recordResult(time)
         output[currentRepeat][tests[testIndex]] = time;
 }
 
-function finish()
+async function finish()
 {
+	try {
+		const result = await runWasmAdd();
+	}
+	catch(err) {
+		result = 0
+	}
     var outputString = "{";
     outputString += '"v": "sunspider-1.0.2", ';
     for (var test in output[0]) {
@@ -162,8 +168,7 @@ function finish()
 <!--    location = "results.html?" + encodeURI(outputString);-->
     document.getElementById("countdown").innerHTML = "finished"
 
-    result = runWasmAdd() + ""
-    xweb_test.invoke("finished", result)
+    xweb_test.invoke("finished", result + "")
 }
 
 </script>
