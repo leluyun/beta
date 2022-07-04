@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <style>
+<!--        body{overflow-x:hidden}-->
+    </style>
+</head>
+<body>
+    <div role="textbox">
+        <input type="text" value="hello">
+    </div>
+    <div id="info"></div>
+</body>
+<script>
+    var myInterval = setInterval(function ()
+    {
+        var log = ""
+        if (window.getSelection().focusNode) {
+          log += "window.getSelection().focusNode tagName:" + window.getSelection().focusNode.tagName
+        } else {
+          log += "window.getSelection().focusNode tagName:null"
+        }
+        log += "\n"
+        if (document.activeElement) {
+          log += "document.activeElement tagName:" + document.activeElement.tagName
+        } else {
+          log += "document.activeElement tagName:null"
+        }
+        document.getElementById("info").innerText = log
+    }, 100);
+</script>
+</html>
