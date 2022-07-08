@@ -2,16 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    <style>
-        body,html{-webkit-user-select:none;font-size:20px}
-    </style>
 </head>
 <body>
 <div id="div1" role="textbox">
     <input id="input1" type="text" value="hello" onfocus="input_focus()">
-    <input type="checkbox" id="cbox" value="first_checkbox">
-    <label for="cbox">1s auto blur</label>
 </div>
+<input type="checkbox" id="cbox" value="cbox" checked="true">
+<label for="cbox">1s auto blur</label>
 <br>
 <div id="div2">12345678901234567890</div>
 <br>
@@ -40,6 +37,7 @@
 
     function input_blur() {
 		document.getElementById("input1").blur()
+		document.getElementById("cbox").checked = false
 	}
 
 	function input_focus() {
