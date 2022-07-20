@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+</head>
+<body>
+<input type="text" id="input" style="width: 0; padding: 0; border: 0;"/>
+<div id="button" style="border: solid red 1px; width: 200px; height: 30px;"></div>
+</body>
+<script>
+const input = document.querySelector('#input')
+const button = document.querySelector('#button')
+
+button.onclick = () => {
+  input.focus()
+}
+
+input.oninput = (e) => {
+  button.innerText = input.value
+}
+</script>
+</html>
