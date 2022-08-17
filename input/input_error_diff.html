@@ -1,0 +1,37 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+</head>
+<body>
+<div>默认Input</div>
+<input type="text" id="input" style="width: 0; padding: 0; border: 0;">
+<div id="button" style="border: solid red 1px; width: 200px; height: 30px;"></div>
+
+<div>微信Input</div>
+<input type="text" id="input2" style="width: 0; padding: 0; border: 0;">
+<div id="button2" style="border: solid red 1px; width: 200px; height: 30px;" wx_extra_info="{&quot;cursor-spacing&quot;:&quot;30&quot;,&quot;show-confirm-bar&quot;:&quot;true&quot;}"></div>
+
+<script>
+const input = document.querySelector('#input')
+const button = document.querySelector('#button')
+
+button.onclick = () => {
+  input.focus()
+}
+
+input.oninput = (e) => {
+  button.innerText = input.value
+}
+
+const input2 = document.querySelector('#input2')
+const button2 = document.querySelector('#button2')
+
+button2.onclick = () => {
+  input2.focus()
+}
+
+input2.oninput = (e) => {
+  button2.innerText = input2.value
+}
+</script>
+</body></html>
