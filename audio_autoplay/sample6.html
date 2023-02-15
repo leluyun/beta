@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>sample6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+<p id="p1">audio未播放</p>
+<audio controls="controls" id="a1">
+  <source src="https://res.imtt.qq.com/qqbrowser_x5/zhengyuli/file/cunzai.mp3" type="audio/mp3" />
+Your browser does not support the audio element.
+</audio>
+<script>
+window.onload = function(){
+    var s = window.setTimeout(function(){
+        document.getElementById("a1").play();
+        document.getElementById("p1").innerHTML="audio开始播放";
+    }, 5000);            
+}
+</script>
+
+</body>
+</html>
