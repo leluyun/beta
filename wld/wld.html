@@ -1,0 +1,100 @@
+<html><head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="cache-control" content="no-cache">
+    <meta name="expires" content="0">
+    <title></title>
+
+    <script>
+        window.__reportStart = Date.now();
+
+        function $injectNode(container, tag, url) {
+            var node = createNode(tag, url);
+            (container||document.documentElement).appendChild(node);
+            node.onerror = function(e) {
+                $reportEvent('E1-' + shortUrl(url));
+            }
+
+            function shortUrl(url) {
+                var array = (url || '').split(/\w\//);
+                array.splice(1, array.length - 2);
+                return array.join('/');
+            }
+
+            function createNode(tag, url) {
+                var node = null;
+                if(tag == 'script') {
+                    node = document.createElement('script');
+                    node.src = url;
+                    node.id = 'main-file';
+                } else if (tag == 'link') {
+                    node = document.createElement('link');
+                    node.setAttribute('rel', 'stylesheet');
+                    node.setAttribute('href', url);
+                }
+                return node;
+            }
+        }
+
+        function $reportEvent(ev) {
+            var text = '';
+            try {
+                var id = (server && server.initData || {}).h_key || 'unknown';
+                text = 'account=wx_wld&appId=wxh5_02&pageId=QQ_Template&defined_name=' + ev +
+                    '&field_y_9=' + encodeURIComponent(navigator.userAgent) +
+                    '&openId=' + id + '&_nopv=1&timestamp=' + new Date().getTime();
+            } catch (e) {}
+            if (text) {
+                var image = new Image();
+                                image.src = 'https://trace.webank.com/rcrm-codcs/wb-rcrm-codcs?' + text;
+                            }
+        }
+    </script>
+
+    <link rel="dns-prefetch" href="//ripd.webankcdn.net">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.1.0/weui.css">
+
+<script defer="" src="//res.wx.qq.com/open/js/jweixin-1.6.0.js"></script><script defer="" src="https://ripd.webankcdn.net/dsfes/wxfe/htdocs/zh_CN/htmledition/lend-page/1.56.0/js/index.js"></script><script defer="" src="//res.wx.qq.com/open/js/jweixin-1.6.0.js"></script><link rel="stylesheet" href="https://ripd.webankcdn.net/dsfes/wxfe/htdocs/zh_CN/htmledition/lend-page/1.56.0/styles/app.7ea4.css"><script defer="" src="https://ripd.webankcdn.net/dsfes/wxfe/htdocs/zh_CN/htmledition/lend-page/1.56.0/js/app.40f28fce.js"></script><script defer="" src="https://ripd.webankcdn.net/dsfes/wxfe/htdocs/zh_CN/htmledition/lend-page/1.56.0/js/vendors.40f28fce.js"></script></head>
+
+<body class="show-loan">
+    <div id="pages" aria-hidden="false"><div id="personcenter" class="page" style="display: none;"><div class="wld-page wld-page_personal-center"><div class="personal__body"><div class="personal__content"><div class="interest-notice"></div> <!----> <div><!----> <div class="my-credit" style="padding-top: 125px;"><div class="my-credit__title"><span aria-label="" role="text"></span> <!----> <!----></div> <div aria-hidden="true" class="my-credit__amount wxss-medium"></div> <div class="my-credit__total"><!----></div></div> <div role="button" aria-label="" class="wld-button wld-button_circle wld-button_normal" style="margin: 30px auto 0px;"><!----><span role="presentation" class="wld-button__text" style="visibility: visible;">
+                    
+                </span></div> <!----> <!----> <!----> <!----></div> <!----></div> <div class="personal__footer"><!----> <div class="footer"><div class="footer-links footer__links" slot="links"><a href="javascript:false;" class="link">
+        
+    </a><a href="javascript:false;" class="link">
+        
+    </a></div> <div class="footer__text"></div></div></div> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----></div><!----></div></div><div id="loan" class="page current" style=""><div class="wld-page wld-page_loan"><div class="input-amount" style="min-height: 156px;"><!----> <div class="wld-input" type="tel" placeholder="输入金额" maxlength="5" autocomplete="off"><div class="wld-input__inner"><!----><input id="wldInput-0" type="tel" placeholder="输入金额" maxlength="5" autocomplete="off" class="wld-input__input"><label for="wldInput-0" class="wld-input__label">¥</label><div class="wld-input__icon"><!----></div></div><!----></div> <div class="recommend" style="visibility: visible;"><span class="recommend__item">
+            1 万
+            <!----></span><span class="recommend__item">
+            2 万
+            <!----></span><span class="recommend__item">
+            4 万
+            <!----></span></div></div> <section class="section-details" style="height: 811px;"><div class="input-amount" style="min-height: 156px; position: static; visibility: hidden; opacity: 0;"><!----> <div class="wld-input" type="tel" placeholder="输入金额" maxlength="5" autocomplete="off"><div class="wld-input__inner"><!----><input id="wldInput-1" type="tel" placeholder="输入金额" maxlength="5" autocomplete="off" class="wld-input__input"><label for="wldInput-1" class="wld-input__label">¥</label><div class="wld-input__icon"><!----></div></div><!----></div> <div class="recommend" style="visibility: visible;"><span class="recommend__item">
+            1 万
+            <!----></span><span class="recommend__item">
+            2 万
+            <!----></span><span class="recommend__item">
+            4 万
+            <!----></span></div></div> <div class="loan__barrier transparent"></div> <!----> <!----></section> <div class="page__gradient loan-actions"><div role="button" aria-label="" aria-disabled="true" class="wld-button wld-button_normal wld-button_disabled"><!----><span role="presentation" class="wld-button__text" style="visibility: visible;">
+        下一步
+    </span></div> <div class="tips"></div> <!----></div> <!----> <!----> <!----> <!----> <!----> <!----> <!----> <!----><!----></div></div></div>
+    <!-- 以下的 dialog 和 mask 皆为 dialog 组件的一部分，请放置于 body 标签 -->
+    <div class="dialog" id="dialog" style="display: none;">
+        <!-- dialog 样式案例 -->
+        <div class="dialog_hd">
+            <h3 class="dialog_title"></h3>
+        </div>
+        <div class="dialog_bd">
+            <p>出错</p>
+        </div>
+        <div class="dialog_ft with2">
+            <a href="javascript:void(0);">确定</a>
+        </div>
+    </div>
+
+    <div class="dialog-box" id="dialog-box" role="dialog" style="display: none; width: 320px;">
+
+    </div>
+
+    <div class="dialog-mask" style="display: none;"></div>
+</div></div></body></html>
