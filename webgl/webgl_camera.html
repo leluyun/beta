@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Canvas WebGL Video Demo</title>
+  <style>
+      canvas {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+<div class="select" style="margin-top:200px">
+  <label for="audioSource">Audio source: </label
+  ><select id="audioSource"></select>
+</div>
+
+<div class="select">
+  <label for="videoSource">Video source: </label
+  ><select id="videoSource"></select>
+</div>
+<button onclick="start()" style="font-size:50px">开始</button>
+<video id="myVideo" width="480" height="270" crossorigin="anonymous"></video>
+<canvas id="myCanvas" width="480" height="270" style="margin-top:300px"></canvas>
+<script>
+function getStream() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const audioSource = audioSelect.value;
+  const videoSource = videoSelect.value;
+  const constraints = {
+    audio: !0,
+    video: !0
+  };
+  return navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(gotStream)
+    .catch(handleError);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  audioSelect.selectedIndex = [...audioSelect.options].findIndex(
+    option => option.text === stream.getAudioTracks()[0].label
+  );
+  videoSelect.selectedIndex = [...videoSelect.options].findIndex(
+    option => option.text === stream.getVideoTracks()[0].label
+  );
+
+<!--  videoElement.addEventListener('play', loop, false)-->
+<!--  function loop() {-->
+<!--    let canvasEle = document.getElementById('myCanvas')-->
+<!--    let cav = canvasEle.getContext('2d')-->
+<!--    cav.drawImage(videoElement,0,0, canvasEle.width, canvasEle.height)-->
+<!--  }-->
+  videoElement.srcObject = stream;
+  videoElement.play();
+}
+
+const videoElement = document.getElementById("myVideo")
+videoElement.setAttribute("playsinline", !0)
+videoElement.style.position = "fixed"
+videoElement.style.pointerEvents = "none"
+videoElement.style.zIndex = 999
+const audioSelect = document.querySelector("select#audioSource");
+const videoSelect = document.querySelector("select#videoSource");
+
+audioSelect.onchange = getStream;
+videoSelect.onchange = getStream;
+
+getStream()
+  .then(getDevices)
+  .then(gotDevices);
+
+function getDevices() {
+  // AFAICT in Safari this only gets default devices until gUM is called :/
+  return navigator.mediaDevices.enumerateDevices();
+}
+
+function gotDevices(deviceInfos) {
+  window.deviceInfos = deviceInfos; // make available to console
+  console.log("Available input and output devices:", deviceInfos);
+  for (const deviceInfo of deviceInfos) {
+    const option = document.createElement("option");
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === "audioinput") {
+      option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
+      audioSelect.appendChild(option);
+    } else if (deviceInfo.kind === "videoinput") {
+      option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+      videoSelect.appendChild(option);
+    }
+  }
+}
+
+function handleError(error) {
+  console.error("Error: ", error);
+}
+</script>
+<script>
+function start() {
+      const video = videoElement;
+      const canvas = document.getElementById('myCanvas');
+      const gl = canvas.getContext('webgl');
+
+      const vertexShaderSource = `
+        attribute vec2 a_position;
+        varying vec2 v_texCoord;
+
+        void main() {
+          gl_Position = vec4(a_position, 0.0, 1.0);
+          v_texCoord = a_position * 0.5 + 0.5;
+        }
+      `;
+
+      const fragmentShaderSource = `
+        precision mediump float;
+        uniform sampler2D u_texture;
+        varying vec2 v_texCoord;
+
+        void main() {
+          gl_FragColor = texture2D(u_texture, v_texCoord);
+        }
+      `;
+
+      const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+      gl.shaderSource(vertexShader, vertexShaderSource);
+      gl.compileShader(vertexShader);
+
+      const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+      gl.shaderSource(fragmentShader, fragmentShaderSource);
+      gl.compileShader(fragmentShader);
+
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error(
+          "a error occured linking program ",
+          gl.getProgramInfoLog(program)
+        );
+        return;
+      }
+
+      gl.useProgram(program);
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1,
+        -1, 1,
+        1, -1,
+        1, 1,
+      ]), gl.STATIC_DRAW);
+
+      const positionAttributeLocation = gl.getAttribLocation(program, 'a_position');
+      gl.enableVertexAttribArray(positionAttributeLocation);
+      gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      function render() {
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        }
+        requestAnimationFrame(render);
+      }
+
+      video.play();
+      render();
+      }
+    </script>
+</body>
+</html>
