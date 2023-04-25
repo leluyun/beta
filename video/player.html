@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视频播放器</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="videoUrl" placeholder="输入视频链接">
+    <video id="videoPlayer" width="480" height="270" controls crossorigin="anonymous" style="display:none;">
+      您的浏览器不支持HTML5视频。
+    </video>
+    <button id="playBtn">播放</button>
+    <button id="pauseBtn">暂停</button>
+  </div>
+  <script>
+    const videoUrlInput = document.getElementById('videoUrl');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    playBtn.addEventListener('click', () => {
+      const url = videoUrlInput.value;
+      if (url) {
+        videoPlayer.src = url;
+        videoPlayer.style.display = "block";
+        videoPlayer.play();
+      } else {
+        alert('请输入视频链接');
+      }
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      videoPlayer.pause();
+    });
+  </script>
+</body>
+</html>
