@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <title></title>
+  <style type="text/css">
+    view {
+      display: block;
+    }
+
+    .weui-panel {
+      background-color: #FFFFFF;
+    }
+
+    button {
+      padding: 10px;
+      border: 1px solid #EEE;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="video_container" style="width:300px;height:225px" class="wx-video-container">
+    <video id="player" class="player" loop="loop" autoplay="autoplay" controls="controls"
+      style="width:100%;height:100%">
+      <source src="video.mp4" type='video/mp4'>
+    </video>
+
+    <button onclick="setTimeout(myFunction, 500)">Play</button>
+  </div>
+  <script>
+    function myFunction() {
+      if (document.getElementById("player").paused) {
+        document.getElementById("player").play()
+      }
+
+      setTimeout(myFunction, 500)
+    }
+  </script>
+</body>
+
+</html>
