@@ -34,7 +34,10 @@
   <script>
     function myFunction() {
       if (document.getElementById("player").paused) {
+        console.log("paused")
         document.getElementById("player").play()
+      } else {
+        console.log("not paused")
       }
 
       setTimeout(myFunction, 500)
