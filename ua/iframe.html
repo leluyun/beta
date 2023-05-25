@@ -22,10 +22,10 @@
 <body class="mall-m-index-page" ontouchstart="">
     <script>
         var onClickPush = () => {
-            history.pushState(history.state, '', 'https://leluyun.github.io/beta/ua/iframe.html');
+            history.pushState(history.state, '', location.href + "/tests");
         };
         var onClickReplace = () => {
-            history.replaceState(history.state, '', 'https://leluyun.github.io/beta/ua/iframe.html');
+            history.replaceState(history.state, '', location.href + "/tests");
         };
         var onClick0 = () => {
             window.open(location.href);
