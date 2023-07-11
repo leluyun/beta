@@ -20,8 +20,24 @@
 </head>
 
 <body class="mall-m-index-page" ontouchstart="">
+    <script>
+        var onClick0 = () => {
+            window.open(location.href, "_blank", "noopener");
+        };
+        var onClickUa = () => {
+            console.log(navigator.userAgent);
+            alert(navigator.userAgent);
+        };
+    </script>
+
     <div>
         <h1>iframe</h1>
+
+        <h1></h1>
+        <button onClick="onClick0()">open new page </button>
+        <h1></h1>
+        <button onClick="onClickUa()">show ua </button>
+
         <iframe name="ss" width="100%" height="600px" src="iframe.html"></iframe>
     </div>
     
