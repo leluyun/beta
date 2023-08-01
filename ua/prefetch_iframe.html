@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, minimal-ui" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="google-site-verification" content="8B5GHSPkQgAqqRqoXyX_BL5IL4IuVKBFGWWfEnbAdXE" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="keywords"
+        content="模板,腾讯文档,项目管理,产品研发,信息收集,作业统计,考勤打卡,需求文档,工作总结汇报,法律合同,简历,word,excel,ppt,在线文档,在线表格,收集表,表单,幻灯片,问卷,收集,打卡,接龙,免费模板,手抄报,离职证明,收入证明" />
+    <meta itemprop="name" content="腾讯文档" />
+    <meta name="description" itemprop="description"
+        content="腾讯文档·模板是一个丰富的在线文档内容平台，提供有价值的文档、表格、PPT、收集表、打卡、接龙、问卷等模板和素材。覆盖项目管理、产品研发、信息收集、作业统计、考勤打卡、需求文档、工作总结汇报、法律合同、求职简历等多种场景，帮助提高学习和办公效率。" />
+    <meta name="author" content="" />
+    <title>test</title>
+	<link rel="prefetch" href="/ua/prefetch.html">
+	<link rel="prefetch" href="/ua/prefetch.css">
+</head>
+
+<body class="mall-m-index-page" ontouchstart="">
+    <script>
+        var onClick0 = () => {
+            window.open(location.href, "_blank", "noopener");
+        };
+        var onClickUa = () => {
+            console.log(navigator.userAgent);
+            alert(navigator.userAgent);
+        };
+        var showIFrame = () => {
+            var x = document.getElementById("iframe_1")
+            x.src = "/ua/prefetch.html"
+        };
+    </script>
+
+    <div>
+        <h1>iframe</h1>
+		
+		<a href="/ua/prefetch.html">Prefetch Demo Page 2</a>
+
+        <h1></h1>
+        <button onClick="onClick0()">open new page </button>
+        <h1></h1>
+        <button onClick="onClickUa()">show ua </button>
+        <h1></h1>
+        <button onClick="showIFrame()">show iframe </button>
+        <iframe id="iframe_1" name="ss" width="100%" height="600px"></iframe>
+    </div>
+    
+</body>
+
+</html>
