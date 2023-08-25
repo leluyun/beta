@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch Event Logger</title>
+    <style>
+        #bigText {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        #eventLogger {
+            white-space: pre-line;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="eventLogger" style="height: 400px;">Touch Event Log</div>
+    <div id="bigText">Hello World</div>
+
+    <script>
+        const eventLogger = document.getElementById("eventLogger");
+        const bigText = document.getElementById("bigText");
+
+        function logEvent(event) {
+            eventLogger.textContent = `${event.type}\n` + eventLogger.textContent;
+        }
+
+        bigText.addEventListener("touchstart", logEvent);
+        bigText.addEventListener("touchend", logEvent);
+        bigText.addEventListener("touchmove", logEvent);
+    </script>
+</body>
+
+</html>
