@@ -8,15 +8,23 @@
         content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, minimal-ui" />
     <title>test</title>
 	
-    <script src="coop_coep.js"></script>
+    <!-- <script src="coop_coep.js"></script> -->
 </head>
-
 <body class="mall-m-index-page" ontouchstart="">
-
+    <script>
+		async function registerServiceWorker() {
+            if ("serviceWorker" in navigator) {
+                try {
+                    const e = "/beta/coop_coep/", t = await navigator.serviceWorker.register(`${e}coop_coep.js`, { scope: e }); t.installing || t.waiting || t.active
+                } catch (e) { }
+            }
+        }
+        registerServiceWorker();
+    </script>
     <div>
-		页面加载成功
+        页面加载成功
     </div>
-    
+
 </body>
 
 </html>
