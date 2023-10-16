@@ -19,7 +19,13 @@
                 } catch (e) { }
             }
         }
-        registerServiceWorker();
+	navigator.serviceWorker.getRegistrations()
+	  .then(function(registrations) {
+		for(let registration of registrations) {
+		  registration.unregister();
+		}
+		registerServiceWorker();
+	  });
     </script>
     <div>
         页面加载成功
