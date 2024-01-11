@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Switcher</title>
+    <style>
+        #colorBox {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        function changeColor(color) {
+            document.getElementById('colorBox').style.backgroundColor = color;
+            document.getElementById('colorName').innerHTML = color;
+        }
+    </script>
+</head>
+<body>
+    <div id="colorBox"></div>
+    <p id="colorName">Red</p>
+    <button onclick="changeColor('red')">Red</button>
+    <button onclick="changeColor('yellow')">Yellow</button>
+    <button onclick="changeColor('blue')">Blue</button>
+</body>
+</html>
