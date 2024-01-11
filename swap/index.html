@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Switcher</title>
-    <style>
+    <style>#btn{ border:3px solid #000}
         #colorBox {
             width: 100px;
             height: 100px;
@@ -16,11 +17,15 @@
         }
     </script>
 </head>
-<body>
-    <div id="colorBox"></div>
-    <p id="colorName">Red</p>
-    <button onclick="changeColor('red')">Red</button>
-    <button onclick="changeColor('yellow')">Yellow</button>
-    <button onclick="changeColor('blue')">Blue</button>
-</body>
-</html>
+<body style="
+    font-size: xxx-large;
+">
+    <div id="colorBox" style="background-color: red;"></div>
+    <p id="colorName">red</p>
+    <div id="btn" onclick="changeColor('red')" style="
+    margin: 10px;
+">Red</div>
+    <div id="btn" onclick="changeColor('yellow')" style="margin: 10px;">Yellow</div>
+    <div id="btn" onclick="changeColor('blue')" style="margin: 10px;">Blue</div>
+
+</body></html>
