@@ -1,0 +1,111 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+
+  <title>CodePen - A Pen by c-sopoo</title>
+<style>
+* {
+      margin: 0;
+      padding: 0;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    div {
+      box-sizing: border-box;
+    }
+
+    .section {
+      padding: 20px;
+      margin: 20px;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .ranking {
+      border: 1px solid red;
+      border-radius: 6px;
+      max-height: 325px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      padding: 20px;
+      padding-bottom: 0;
+    }
+
+    .ranking:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    .ranking .ranking-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+/*       重点 */
+      max-height: 240px;
+    }
+
+    .ranking .ranking-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      height: 60px;
+      padding: 10px;
+      font-size: 28px;
+      border-radius: 8px;
+      width: 260px;
+      background-color: #ed8888;
+    }
+
+    .ranking .ranking-item:nth-child(n+4) {
+      margin-left: 20px;
+    }
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="section">
+    <div scroll-x="">
+      <div class="flex">
+        <div class="ranking">
+          <div class="label">
+            排行榜
+          </div>
+          <div class="ranking-list">
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+          </div>
+        </div>
+        <div class="ranking">
+          <div class="label">
+            排行榜
+          </div>
+          <div class="ranking-list">
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+            <div class="ranking-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+
+
+</body></html>
