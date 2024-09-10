@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>同层渲染测试html</title>
+    <meta name="viewport">
+</head>
+<body>
+<div>
+    <div id="bodyId2" >
+        <embed id="nativeInput" type = "native/input" width="800" height="700" src="test" />
+    </div>
+    <div id="bodyId">
+        <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=xxx?" style = "background-color:red"/>
+    </div>
+    <div id="bodyId1">
+        <embed id="nativeVideo" type = "native/video" width="500" height="500" src="test" style = "background-color:red"/>
+    </div>
+
+
+</div>
+<div id="button" width="500" height="200">
+    <p>bottom</p>
+</div>
+</body>
+</html>
