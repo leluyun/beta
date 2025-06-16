@@ -378,8 +378,8 @@
             
             // 合并元数据和帧数据
             const combined = new Uint8Array(metaHeader.length + data.length);
-            combined.set(metaHeader);
-            combined.set(data, metaHeader.length);
+            combined.set(data);
+            combined.set(metaHeader, data.buffer.byteLength)
             frame.data = combined.buffer
         }
         
@@ -427,7 +427,7 @@
             }
             
             // 提取元数据头
-            const metaHeader = data.slice(0, METADATA_HEADER_SIZE);
+            const metaHeader = data.slice(data.buffer.byteLength - METADATA_HEADER_SIZE, data.buffer.byteLength);
             const dataView = new DataView(metaHeader.buffer);
             
             // 解析元数据
@@ -439,7 +439,7 @@
             };
             
             // 提取原始帧数据
-            const frameData = data.slice(METADATA_HEADER_SIZE);
+            const frameData = data.slice(0, data.buffer.byteLength - METADATA_HEADER_SIZE);
             frame.data = frameData.buffer
 
             return metadata
