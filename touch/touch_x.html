@@ -1,0 +1,72 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<title>CodePen - A Pen by  bearyan</title>
+<style>
+body {
+  word-wrap: break-word;
+}
+.console {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  background: black;
+  color: white;
+  white-space: pre-wrap;
+}
+/* 新增横向滚动样式 */
+.content-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div id="app">
+  <p>{{ua}}</p>
+  <div class="content-container">
+    <div @click="click" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-html="message"></div>
+  </div>
+  <div class="console">{{console}}</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script id="rendered-js">
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: [...new Array(2000)].reduce((sum, item, index) => { 
+      return sum += index + ' '  // 改为空格分隔
+    }, ''),
+    console: '',
+    ua: navigator.userAgent,
+  },
+  methods: {
+    log(msg) {
+       this.$data.console = msg + '\n' + this.$data.console;
+    },
+    touchstart() {
+      this.log('touchstart');
+    },
+    touchmove() {
+      this.log('touchmove');
+    },
+    touchend() {
+      this.log('touchend');
+    },
+    click() {
+      this.log('click');
+    },
+  },
+})
+</script>
+</body></html>
