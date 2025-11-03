@@ -21,6 +21,11 @@ body {
   overflow-x: auto;
   white-space: nowrap;
 }
+/* 新增数字标签样式 */
+.number-item {
+  display: inline-block;
+  margin-right: 5px;
+}
 </style>
 <script>
   window.console = window.console || function(t) {};
@@ -35,7 +40,14 @@ body {
 <div id="app">
   <p>{{ua}}</p>
   <div class="content-container">
-    <div @click="click" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-html="message"></div>
+    <div v-for="(num, index) in numbers" :key="index"
+         class="number-item"
+         @click="click"
+         @touchstart="touchstart"
+         @touchmove="touchmove"
+         @touchend="touchend">
+      {{ num }}
+    </div>
   </div>
   <div class="console">{{console}}</div>
 </div>
@@ -44,9 +56,7 @@ body {
 var app = new Vue({
   el: '#app',
   data: {
-    message: [...new Array(2000)].reduce((sum, item, index) => { 
-      return sum += index + ' '  // 改为空格分隔
-    }, ''),
+    numbers: Array.from({length: 2000}, (_, i) => i),
     console: '',
     ua: navigator.userAgent,
   },
