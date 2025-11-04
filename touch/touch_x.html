@@ -25,6 +25,7 @@ body {
 .number-item {
   display: inline-block;
   margin-right: 5px;
+  font-size: 80px;
 }
 </style>
 <script>
@@ -39,7 +40,7 @@ body {
 <body translate="no">
 <div id="app">
   <p>{{ua}}</p>
-  <div class="content-container">
+  <div class="content-container" @click="onParentClick">
     <div v-for="(num, index) in numbers" :key="index"
          class="number-item"
          @click="click"
@@ -53,6 +54,9 @@ body {
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 <script id="rendered-js">
+function onParentClick() {
+  this.log('parent_click');
+}
 var app = new Vue({
   el: '#app',
   data: {
@@ -75,6 +79,11 @@ var app = new Vue({
     },
     click() {
       this.log('click');
+      console.log('click')
+    },
+    onParentClick() {
+      this.log('parent_click');
+      console.log('parent_click')
     },
   },
 })
