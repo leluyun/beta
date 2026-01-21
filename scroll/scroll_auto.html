@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动条测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* 外层包装，仅仅为了美观 */
+        .wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            width: fit-content;
+        }
+
+        /* ========================
+           1. 横向滚动条样式 (Horizontal)
+           ======================== */
+        .h-scroll-container {
+            width: 300px; /* 容器固定宽度 */
+            height: 120px;
+            border: 2px solid #2196F3;
+            /* 关键属性：X轴超出滚动，Y轴隐藏 */
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .h-scroll-content {
+            /* 内容宽度：700px (大于容器300px的两倍) */
+            width: 700px;
+            height: 100%;
+            /* 渐变背景方便观察滚动 */
+            background: linear-gradient(to right, #bbdefb, #ffecb3, #ffccbc);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            font-weight: bold;
+            color: #333;
+        }
+
+
+        /* ========================
+           2. 竖向滚动条样式 (Vertical)
+           ======================== */
+<!--        .v-scroll-container {-->
+<!--            width: 300px;-->
+<!--            height: 200px; /* 容器固定高度 */-->
+<!--            border: 2px solid #4CAF50;-->
+<!--            /* 关键属性：Y轴超出滚动，X轴隐藏 */-->
+<!--            overflow-y: auto;-->
+<!--            overflow-x: hidden;-->
+<!--        }-->
+
+<!--        .v-scroll-content {-->
+<!--            /* 内容高度：500px (大于容器200px的两倍) */-->
+<!--            height: 500px;-->
+<!--            /* 渐变背景方便观察滚动 */-->
+<!--            background: linear-gradient(to bottom, #c8e6c9, #fff9c4, #ffcdd2);-->
+<!--            padding: 10px;-->
+<!--            text-align: center;-->
+<!--            font-weight: bold;-->
+<!--            color: #333;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h2>1. 横向滚动条 (X轴超长)</h2>
+    <p>容器宽度: 300px | 内容宽度: 700px</p>
+
+    <!-- 横向滚动容器 -->
+    <div class="h-scroll-container">
+        <!-- 实际撑开宽度的内容块 -->
+        <div class="h-scroll-content">
+            <span>👈 最左侧 (起点)</span>
+            <span>中间区域，请继续向右滑动 👉</span>
+            <span>最右侧 (终点) ✅</span>
+        </div>
+    </div>
+</div>
+
+<!--<div class="wrapper">-->
+<!--    <h2>2. 竖向滚动条 (Y轴超高)</h2>-->
+<!--    <p>容器高度: 200px | 内容高度: 500px</p>-->
+
+<!--    &lt;!&ndash; 竖向滚动容器 &ndash;&gt;-->
+<!--    <div class="v-scroll-container">-->
+<!--        &lt;!&ndash; 实际撑开高度的内容块 &ndash;&gt;-->
+<!--        <div class="v-scroll-content">-->
+<!--            <div>⬆️ 最顶部 (起点)</div>-->
+<!--            <div>往下滚动...</div>-->
+<!--            <div>继续往下...</div>-->
+<!--            <div>快到底了...</div>-->
+<!--            <div>⬇️ 最底部 (终点) ✅</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+</body>
+</html>
